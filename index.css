@@ -10,11 +10,12 @@ hr {
 }
 
 h1 {
-    font-size: 72px;
+    font-size: 62px;
     word-wrap: break-word;
 }
 h3 {
-    font-size: 45px;
+    font-size: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 p {
     font-size: 20px;
