@@ -11,6 +11,7 @@ hr {
 
 h1 {
     font-size: 72px;
+    word-wrap: break-word;
 }
 h3 {
     font-size: 45px;
@@ -23,7 +24,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 85vw;
+    width: 90vw;
     padding: 0 5vw;
     height: 100vh;
     word-wrap: break-word;
@@ -34,8 +35,7 @@ main, section {
     flex-direction: column;
     align-items: center;
     word-wrap: break-word;
-    width: 50vw;
-
+    width: 90vw;
 }
 section {
     margin: 2vh 0;
