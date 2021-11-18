@@ -23,15 +23,19 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 90vw;
+    width: 85vw;
     padding: 0 5vw;
     height: 100vh;
+    word-wrap: break-word;
 }
 
 main, section {
     display: flex;
     flex-direction: column;
     align-items: center;
+    word-wrap: break-word;
+    width: 85vw;
+
 }
 section {
     margin: 2vh 0;
