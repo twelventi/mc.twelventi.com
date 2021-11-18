@@ -46,6 +46,7 @@ async def on_message(m):
                 if value in tokens:
                     auth=True
         if not auth:
+            await m.delete()
             return
 
         with open('whitelist.txt', 'a') as f:
