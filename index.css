@@ -62,6 +62,8 @@ input[type="submit"] {
     cursor: pointer;
     background: #313131;
     border-radius: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
 
 input[type="submit"]:hover{
