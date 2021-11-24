@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "koa-body": "^4.2.0",
+    "koa-mount": "^4.0.0"
+  }
+}
