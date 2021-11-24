@@ -1,6 +1,6 @@
 const fs = require('fs');
-const PATH_TO_WHITELIST = "whitelist.txt"
-const PATH_TO_TOKENS = "tokens.txt"
+const PATH_TO_WHITELIST = `${__dirname}/whitelist.txt`
+const PATH_TO_TOKENS = `${__dirname}/tokens.txt`
 
 fs.appendFileSync(PATH_TO_WHITELIST, '');
 fs.appendFileSync(PATH_TO_TOKENS, '');
