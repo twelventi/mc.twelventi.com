@@ -2,7 +2,7 @@ import random
 import os
 real_path = os.path.realpath(__file__)
 dir_path = os.path.dirname(real_path)
-token_path = f"{dir_path}/../simple_server/api/token.txt"
+token_path = f"{dir_path}/../simple_server/api/tokens.txt"
 
 async def handle_message(m):
     if m.channel.name == "invite_links":
