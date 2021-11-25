@@ -1,11 +1,16 @@
 import discord
 import random
+import re
+import os
 from discord.ext import commands
+
+real_path = os.path.realpath(__file__)
+dir_path = os.path.dirname(real_path)
 
 TOKEN=""
 
 #init secret
-with open('secrets.txt', 'r') as f:
+with open(f'{dir_path}/../secrets.txt', 'r') as f:
     lines=f.readlines();
     for line in lines:
         key, value = line.split('=')
@@ -24,7 +29,11 @@ async def on_ready():
 @client.event
 async def on_message(m):
     if m.channel.name == "gh-updates":
-        print(m.embeds[0].title)
+        matches = re.match("\[.*:(.*)\]" ,m.embeds[0].title)
+        if len(matches) > 0:
+            branch = matches[1]
+            if branch == "main":
+                os.system(f"{dir_path}/../update-server.sh")
 
 print(TOKEN)
 # Run the bot
