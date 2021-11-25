@@ -18,5 +18,5 @@ exports.createToken = () => {
 }
 
 exports.addUserToWhitelist = (user) => {
-    fs.appendFileSync(PATH_TO_WHITELIST, `${user}\n`);
+    fs.writeFileSync('/tmp/minecraft.stdin', `whitelist add ${user}`)
 }
