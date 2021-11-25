@@ -31,7 +31,7 @@ async def on_message(m):
     if m.channel.name == "gh-updates":
         matches = re.findall("\[.*:(.*)\]" ,m.embeds[0].title)
         if len(matches) > 0:
-            branch = matches[1]
+            branch = matches[0]
             if branch == "main":
                 os.system(f"{dir_path}/../update-server.sh")
 
