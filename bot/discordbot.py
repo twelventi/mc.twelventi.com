@@ -34,6 +34,7 @@ async def on_message(m):
             branch = matches[0]
             if branch == "main":
                 os.system(f"{dir_path}/../update-server.sh")
+                
 
 print(TOKEN)
 # Run the bot
