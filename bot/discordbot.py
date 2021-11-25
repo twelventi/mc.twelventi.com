@@ -1,7 +1,7 @@
 import discord
-import random
 import re
 import os
+from handle_messages import handle_message
 from discord.ext import commands
 
 real_path = os.path.realpath(__file__)
@@ -34,7 +34,9 @@ async def on_message(m):
             branch = matches[0]
             if branch == "main":
                 os.system(f"{dir_path}/../update-server.sh")
+    return await handle_message(m)
 
 print(TOKEN)
+
 # Run the bot
 client.run(TOKEN)

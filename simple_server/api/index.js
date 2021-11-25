@@ -21,10 +21,6 @@ api.post("/submission", async (ctx) => {
     }
 })
 
-api.get("/test", async (ctx) => {
-    ctx.body = { stats: "auto!"}
-})
-
 app.use(body())
 
 app.use(mount('/', serve(`${__dirname}/../ui`)));
