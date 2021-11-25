@@ -24,7 +24,7 @@ async def on_ready():
 @client.event
 async def on_message(m):
     if m.channel.name == "gh-updates":
-        print(m.embeds)
+        print(m.embeds[0].description)
 
 print(TOKEN)
 # Run the bot
