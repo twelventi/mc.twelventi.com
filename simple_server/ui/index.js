@@ -72,7 +72,9 @@ window.onload = (e) => {
         // If the count down is finished, write some text
         if (distance < 0) {
             clearInterval(x);
-            document.getElementById("countdown-timer").innerHTML = "LAUNCHING SOON! CONNECT TO mc.twelventi.com in your Minecraft Client!";
+            let el = document.getElementById("countdown-timer")
+            el.innerHTML = "LAUNCHING SOON! CONNECT TO mc.twelventi.com in your Minecraft Client!";
+            el.classList.remove('countdown-timer-bg');
         }
     }, 1000);
 }
