@@ -69,3 +69,14 @@ input[type="submit"] {
 input[type="submit"]:hover{
     background: #212121;
 }
+
+#countdown-timer {
+    font-size: 40px;
+    font-weight: bold;
+    padding: 10px;
+    margin-top: 20px;
+}
+.countdown-timer-bg {
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+}
