@@ -5,11 +5,10 @@ let identityt = undefined;
 if (urlParams.has('it')) {
     identityt = urlParams.get("it");
     history.pushState({}, null, location.protocol + '//' + location.host + location.pathname);
-} else {
-    document.querySelector('#signup').remove();
 }
 window.onload = (e) => {
     let username_element = document.querySelector('#minecraft-name');
+
     function processForm(e) {
         if (e.preventDefault) e.preventDefault();
 
@@ -40,11 +39,16 @@ window.onload = (e) => {
         return false;
     }
 
-    let form = document.getElementById('submit-form');
-    if (form.attachEvent) {
-        form.attachEvent("submit", processForm);
+
+    if (!identityt) {
+        document.querySelector('#signup').remove();
     } else {
-        form.addEventListener("submit", processForm);
+        let form = document.getElementById('submit-form');
+        if (form.attachEvent) {
+            form.attachEvent("submit", processForm);
+        } else {
+            form.addEventListener("submit", processForm);
+        }
     }
 
 
