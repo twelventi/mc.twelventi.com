@@ -5,6 +5,8 @@ let identityt = undefined;
 if (urlParams.has('it')) {
     identityt = urlParams.get("it");
     history.pushState({}, null, location.protocol + '//' + location.host + location.pathname);
+} else {
+    document.querySelector('#signup').remove();
 }
 window.onload = (e) => {
     let username_element = document.querySelector('#minecraft-name');
