@@ -6,15 +6,19 @@ from threading import Thread
 
 channel_id = 910710276360405025
 
+
 class minecraft_log_handler:
     def __init__(self, logfile, client):
         self.logfile = logfile
         self.client = client
-    
+
     def run(self):
-        asyncio.create_task(async lambda: await self._follower(self.logfile))
-        #t = Thread(target = lambda : asyncio.run(self._follower(self.logfile)))
-        #t.start()
+        t = Thread(
+            target=lambda: asyncio.run_coroutine_threadsafe(
+                self._follower(self.logfile), asyncio.get_running_loop()
+            )
+        )  # asyncio.run(self._follower(self.logfile)))
+        t.start()
 
     async def _follower(self, logfile):
         for line in tailer.follow(open(logfile)):
@@ -24,7 +28,9 @@ class minecraft_log_handler:
     async def create_and_send_invite_token(self, mc_user):
         channel = self.client.get_channel(channel_id)
         invite = channel.create_invite()
-        os.system(f'''minecraft tellraw {mc_user} {{"text":"Join our discord! {(await invite).url}"}}''')
+        os.system(
+            f"""minecraft tellraw {mc_user} {{"text":"Join our discord! {(await invite).url}"}}"""
+        )
         return ""
 
     async def _message_parser(self, message):
@@ -32,7 +38,7 @@ class minecraft_log_handler:
         print(match, message)
         if match:
             await self.create_and_send_invite_token(str(match[1]))
-        
+
 
 if __name__ == "__main__":
     mlh = minecraft_log_handler("./test.log", None)
