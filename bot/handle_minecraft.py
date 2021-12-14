@@ -41,7 +41,7 @@ class minecraft_log_handler:
             await self._message_parser(line)
 
     async def create_and_send_invite_token(self, mc_user):
-        requests.post(WEBHOOK_URL, data={"message": mc_user})
+        requests.post(WEBHOOK_URL, data={"content": mc_user})
 
     async def _message_parser(self, message):
         match = re.search("INFO]: (.*) joined the game", message)
