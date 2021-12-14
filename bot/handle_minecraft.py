@@ -27,8 +27,8 @@ class minecraft_log_handler:
         try:
             user = re.search("INFO]: (.*) joined the game", message)[1]
             await self.create_and_send_invite_token(message)
-        except e:
-            pass
+        except Exception as e:
+            print(e)
 
 if __name__ == "__main__":
     mlh = minecraft_log_handler("./test.log", None)
