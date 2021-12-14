@@ -17,8 +17,8 @@ class minecraft_log_handler:
 
     async def _follower(self, logfile):
         for line in tailer.follow(open(logfile)):
-            await self._message_parser(line)
             print(line)
+            await self._message_parser(line)
 
     async def create_and_send_invite_token(self, mc_user):
         channel = await self.client.get_channel(channel_id)
@@ -27,6 +27,7 @@ class minecraft_log_handler:
 
     async def _message_parser(self, message):
         match = re.search("INFO]: (.*) joined the game", message)
+        print(match, message)
         if match:
             await self.create_and_send_invite_token(match[1])
         
