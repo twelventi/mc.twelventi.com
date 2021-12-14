@@ -44,7 +44,7 @@ async def on_message(m):
         channel = client.get_channel(channel_id)
         invite = channel.create_invite()
         tellraw = """
-        {"text":"Join our discord! <url>", clickEvent":{"action":"open_url","value":"<url>"}}
+        {"text":"Join our discord! <url>", "clickEvent":{"action":"open_url","value":"<url>"}}
         """.replace("<url>", (await invite).url)
         os.system(
             f"minecraft tellraw {str(m.content)} {tellraw}"
