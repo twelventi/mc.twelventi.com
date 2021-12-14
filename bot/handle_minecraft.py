@@ -23,7 +23,7 @@ with open(f'{dir_path}/../secrets.txt', 'r') as f:
         key, value = line.split('=')
         if key=="TWELVENTICRAFT_TOKEN":
             TOKEN=value
-        if key=="GAME_JOIN_WEBOOK":
+        if key=="GAME_JOIN_WEBHOOK":
             WEBHOOK_URL=value
 
 class minecraft_log_handler:

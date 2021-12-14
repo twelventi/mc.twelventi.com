@@ -21,7 +21,7 @@ with open(f'{dir_path}/../secrets.txt', 'r') as f:
         key, value = line.split('=')
         if key=="TWELVENTICRAFT_TOKEN":
             TOKEN=value
-        if key=="GAME_JOIN_WEBOOK":
+        if key=="GAME_JOIN_WEBHOOK":
             WEBHOOK_URL=value
 
 client = commands.Bot(command_prefix='!')
@@ -41,7 +41,7 @@ async def on_message(m):
             if branch == "main":
                 os.system(f"{dir_path}/../update-server.sh")
     if m.channel.name == "game-join":
-        channel = self.client.get_channel(channel_id)
+        channel = client.get_channel(channel_id)
         invite = channel.create_invite()
         os.system(
             f"""minecraft tellraw {m.content} {{"text":"Join our discord! {(await invite).url}"}}"""
