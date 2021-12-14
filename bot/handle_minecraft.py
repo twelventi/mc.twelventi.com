@@ -5,6 +5,11 @@ import requests
 import os
 from threading import Thread
 
+
+real_path = os.path.realpath(__file__)
+dir_path = os.path.dirname(real_path)
+
+
 channel_id = 910710276360405025
 TOKEN=""
 MINECRAFT_LOG_PATH = "/home/dab/twelventicraft-server/logs/latest.log"
