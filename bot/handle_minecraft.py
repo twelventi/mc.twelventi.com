@@ -41,6 +41,7 @@ class minecraft_log_handler:
             await self._message_parser(line)
 
     async def create_and_send_invite_token(self, mc_user):
+        print(WEBHOOK_URL, mc_user)
         requests.post(WEBHOOK_URL, {"content": mc_user})
         return ""
 
