@@ -23,7 +23,7 @@ class minecraft_log_handler:
     async def create_and_send_invite_token(self, mc_user):
         channel = self.client.get_channel(channel_id)
         invite = channel.create_invite()
-        os.system(f'''minecraft tellraw {mc_user} {{"text":"Join our discord! {invite.url}"}}''')
+        os.system(f'''minecraft tellraw {mc_user} {{"text":"Join our discord! {(await invite).url}"}}''')
         return ""
 
     async def _message_parser(self, message):
