@@ -26,11 +26,10 @@ class minecraft_log_handler:
         os.system(f'''minecraft tellraw {user} {{"text":"Join our discord! {invite.url}"}}''')
 
     async def _message_parser(self, message):
-        try:
-            user = re.search("INFO]: (.*) joined the game", message)[1]
-            await self.create_and_send_invite_token(message)
-        except Exception as e:
-            print(e)
+        match = re.search("INFO]: (.*) joined the game", message)
+        if len(match) > 2:
+            await self.create_and_send_invite_token(match[1])
+        
 
 if __name__ == "__main__":
     mlh = minecraft_log_handler("./test.log", None)
