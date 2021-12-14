@@ -4,13 +4,12 @@ import re
 import os
 from threading import Thread
 
-channel_id = "910710276360405025"
+channel_id = 910710276360405025
 
 class minecraft_log_handler:
     def __init__(self, logfile, client):
         self.logfile = logfile
         self.client = client
-        print(client.get_channel(channel_id))
     
     def run(self):
         t = Thread(target = lambda : asyncio.run(self._follower(self.logfile)))
