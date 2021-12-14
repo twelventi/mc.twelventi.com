@@ -1,9 +1,10 @@
 import tailer
 import asyncio
 import re
+import requests
 import os
 from threading import Thread
-
+from discordbot import WEBHOOK_URL
 channel_id = 910710276360405025
 
 
@@ -13,12 +14,10 @@ class minecraft_log_handler:
         self.client = client
 
     def run(self):
-        t = Thread(
-            target=lambda: asyncio.run_coroutine_threadsafe(
+        asyncio.run_coroutine_threadsafe(
                 self._follower(self.logfile), asyncio.get_running_loop()
             )
-        )  # asyncio.run(self._follower(self.logfile)))
-        t.start()
+        
 
     async def _follower(self, logfile):
         for line in tailer.follow(open(logfile)):
@@ -26,12 +25,7 @@ class minecraft_log_handler:
             await self._message_parser(line)
 
     async def create_and_send_invite_token(self, mc_user):
-        channel = self.client.get_channel(channel_id)
-        invite = channel.create_invite()
-        os.system(
-            f"""minecraft tellraw {mc_user} {{"text":"Join our discord! {(await invite).url}"}}"""
-        )
-        return ""
+        requests.post(WEBHOOK_URL, data={"message": mc_user})
 
     async def _message_parser(self, message):
         match = re.search("INFO]: (.*) joined the game", message)
