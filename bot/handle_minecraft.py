@@ -10,6 +10,7 @@ class minecraft_log_handler:
     def __init__(self, logfile, client):
         self.logfile = logfile
         self.client = client
+        print(client)
     
     def run(self):
         t = Thread(target = lambda : asyncio.run(self._follower(self.logfile)))
@@ -25,7 +26,7 @@ class minecraft_log_handler:
         invite = await channel.create_invite()
         os.system(f'''minecraft tellraw {user} {{"text":"Join our discord! {invite.url}"}}''')
         return ""
-        
+
     async def _message_parser(self, message):
         match = re.search("INFO]: (.*) joined the game", message)
         print(match, message)
