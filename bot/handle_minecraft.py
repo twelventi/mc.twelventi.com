@@ -24,7 +24,8 @@ class minecraft_log_handler:
         channel = await self.client.get_channel(channel_id)
         invite = await channel.create_invite()
         os.system(f'''minecraft tellraw {user} {{"text":"Join our discord! {invite.url}"}}''')
-
+        return ""
+        
     async def _message_parser(self, message):
         match = re.search("INFO]: (.*) joined the game", message)
         print(match, message)
