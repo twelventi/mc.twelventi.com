@@ -49,7 +49,7 @@ class minecraft_log_handler:
         match = re.search("INFO]: (.*) joined the game", message)
         print(match, message)
         if match:
-            print(match[1])
+            print("MATCHED_____", match[1])
             self.create_and_send_invite_token(str(match[1]))
 
 
