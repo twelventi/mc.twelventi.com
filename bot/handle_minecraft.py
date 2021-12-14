@@ -40,7 +40,7 @@ class minecraft_log_handler:
             print(line)
             await self._message_parser(line)
 
-    async def create_and_send_invite_token(self, mc_user):
+    def create_and_send_invite_token(self, mc_user):
         print(WEBHOOK_URL, mc_user)
         requests.post(WEBHOOK_URL, {"content": mc_user})
         return ""
@@ -50,7 +50,7 @@ class minecraft_log_handler:
         print(match, message)
         if match:
             print(match[1])
-            await self.create_and_send_invite_token(str(match[1]))
+            self.create_and_send_invite_token(str(match[1]))
 
 
 if __name__ == "__main__":
