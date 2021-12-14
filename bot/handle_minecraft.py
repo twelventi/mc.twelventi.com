@@ -12,7 +12,7 @@ class minecraft_log_handler:
         self.client = client
     
     def run(self):
-        asyncio.create_task(self._follower(self.logfile))
+        asyncio.create_task(async lambda: await self._follower(self.logfile))
         #t = Thread(target = lambda : asyncio.run(self._follower(self.logfile)))
         #t.start()
 
