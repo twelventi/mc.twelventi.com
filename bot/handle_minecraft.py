@@ -10,7 +10,7 @@ class minecraft_log_handler:
     def __init__(self, logfile, client):
         self.logfile = logfile
         self.client = client
-        print(client)
+        print(client.get_channel(channel_id))
     
     def run(self):
         t = Thread(target = lambda : asyncio.run(self._follower(self.logfile)))
