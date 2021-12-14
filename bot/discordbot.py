@@ -44,7 +44,7 @@ async def on_message(m):
         channel = client.get_channel(channel_id)
         invite = channel.create_invite()
         os.system(
-            "minecraft tellraw " + str(m.content) +  "\"{\\\"text\\\":\\\"Join our discord! " + (await invite).url + "\\\"}}\""
+            "minecraft tellraw " + str(m.content) +  " \"{\\\"text\\\":\\\"Join our discord! " + (await invite).url + "\\\"}}\""
         )
     return await handle_message(m)
 
