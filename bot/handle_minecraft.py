@@ -15,7 +15,7 @@ class minecraft_log_handler:
 
     async def _follower(self, logfile):
         for line in tailer.follow(open(logfile)):
-            self._message_parser(line)
+            await self._message_parser(line)
             print(line)
 
     async def create_and_send_invite_token(self, mc_user):
