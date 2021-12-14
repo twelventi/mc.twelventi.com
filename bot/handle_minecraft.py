@@ -27,7 +27,7 @@ class minecraft_log_handler:
 
     async def _message_parser(self, message):
         match = re.search("INFO]: (.*) joined the game", message)
-        if len(match) > 2:
+        if match and len(match) > 2:
             await self.create_and_send_invite_token(match[1])
         
 
