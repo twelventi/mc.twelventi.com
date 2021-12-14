@@ -10,7 +10,7 @@ dir_path = os.path.dirname(real_path)
 
 TOKEN=""
 channel_id = "910710276360405025"
-MINECRAFT_LOG_PATH = "/home/dab/twelventicraft-server/logs/latest"
+MINECRAFT_LOG_PATH = "/home/dab/twelventicraft-server/logs/latest.log"
 
 #init secret
 with open(f'{dir_path}/../secrets.txt', 'r') as f:
