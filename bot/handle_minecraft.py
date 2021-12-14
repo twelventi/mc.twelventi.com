@@ -14,11 +14,9 @@ class minecraft_log_handler:
         self.client = client
 
     def run(self):
-        asyncio.run_coroutine_threadsafe(
-                self._follower(self.logfile), asyncio.get_running_loop()
-            )
+        t = Thread(target= lambda: asyncio.run(self._follower(self.logfile)))
+        t.start()
         
-
     async def _follower(self, logfile):
         for line in tailer.follow(open(logfile)):
             print(line)
