@@ -3,11 +3,14 @@ import re
 import os
 from handle_messages import handle_message
 from discord.ext import commands
+from handle_minecraft import minecraft_log_handler
 
 real_path = os.path.realpath(__file__)
 dir_path = os.path.dirname(real_path)
 
 TOKEN=""
+channel_id = "910710276360405025"
+MINECRAFT_LOG_PATH = "/home/dab/twelventicraft-server/logs/latest"
 
 #init secret
 with open(f'{dir_path}/../secrets.txt', 'r') as f:
@@ -38,5 +41,8 @@ async def on_message(m):
 
 print(TOKEN)
 
+mclh = minecraft_log_handler(MINECRAFT_LOG_PATH, client)
+
+mclh.run()
 # Run the bot
 client.run(TOKEN)
