@@ -44,8 +44,8 @@ class minecraft_log_handler:
                     time.sleep(0.1)
                     continue
                 yield line
-        
-        for line in follow(logfile):
+        f = open(logfile, 'r')
+        for line in follow(f):
             print(line)
             await self._message_parser(line)
 
