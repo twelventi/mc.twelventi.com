@@ -36,7 +36,16 @@ class minecraft_log_handler:
         t.start()
 
     async def _follower(self, logfile):
-        for line in tailer.follow(open(logfile)):
+        def follow(thefile):
+            thefile.seek(0,2)
+            while True:
+                line = thefile.readline()
+                if not line:
+                    time.sleep(0.1)
+                    continue
+                yield line
+        
+        for line in follow(logfile):
             print(line)
             await self._message_parser(line)
 
