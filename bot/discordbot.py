@@ -44,7 +44,8 @@ async def on_message(m):
         channel = client.get_channel(channel_id)
         invite = channel.create_invite()
         tellraw = """ "{\\"text\\":\\"Join our discord! <url>\\", \\"clickEvent\\":{\\"action\\":\\"open_url\\",\\"value\\":\\"<url>\\"}}" """.replace("<url>", (await invite).url)
-        cmd_str = f"minecraft tellraw {str(m.content)} {tellraw}"
+        safe_username = re.sub('[^a-zA-Z0-9_\.]', m.content)
+        cmd_str = f"minecraft tellraw {safe_username} {tellraw}"
         print(cmd_str)
         os.system(cmd_str)
 
