@@ -18,5 +18,6 @@ exports.createToken = () => {
 }
 
 exports.addUserToWhitelist = (user) => {
-    fs.writeFileSync('/tmp/minecraft.stdin', `whitelist add ${user}\n`)
+    let safe_user = user.replaceAll(/[^a-zA-Z0-9_\.]/g, '');
+    fs.writeFileSync('/tmp/minecraft.stdin', `whitelist add ${safe_user}\n`)
 }
